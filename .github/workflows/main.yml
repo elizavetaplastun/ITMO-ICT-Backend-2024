@@ -1,0 +1,5 @@
+name: deploy
+on: 
+  commit :
+    branches: [master]
+    
