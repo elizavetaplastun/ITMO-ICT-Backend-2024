@@ -1,5 +1,22 @@
-name: deploy
-on: 
+name: Deploy to the server
+
+on:
   push:
-    branches: [main]
-    
+    branches:
+      - main
+
+jobs:
+  deploy_dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update code
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          scrscript: cd/root/ITMO-ICT-Backend-2024 && git checkout 1r4 && git pull && cd labs/K33402/Plastun\ Elizaveta/lr4 && docker compose up --build -d
