@@ -17,6 +17,7 @@ jobs:
 
       - name: Run Docker Compose
         run: |
+                  cd labs/K33402/Plastun Elizaveta/lr4
                   docker-compose down
                   docker-compose up -d --build
        
