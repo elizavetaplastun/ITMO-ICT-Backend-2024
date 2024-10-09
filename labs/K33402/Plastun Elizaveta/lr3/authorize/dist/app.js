@@ -12,7 +12,7 @@ dotenv_1.default.config();
 console.log(process.env.JWT_SECRET_KEY || "my$3crEtK3y12345!");
 app.use(body_parser_1.default.json());
 app.use(userRoutes_1.userRoutes);
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
