@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import { userRoutes } from "./src/routes/userRoutes";
 import { authUsersMiddlware } from "./src/middlewares/auth";
 
-
 const app = express();
 dotenv.config();
 console.log(process.env.JWT_SECRET_KEY as string);
