@@ -6,14 +6,17 @@ on:
       - main
 jobs:
   deploy_dashboard:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Update code
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          scrscript: cd/root/ITMO-ICT-Backend-2024 && git checkout 1r4 && git pull && cd labs/K33402/Plastun\ Elizaveta/lr4 && docker compose up --build -d
+        uses: docker/setup-buildx-action@v1
+
+      - name: Run Docker Compose
+        run: |
+                  docker-compose down
+                  docker-compose up -d --build
+       
